@@ -19,50 +19,49 @@ namespace calculadora
 
         private void rb_Soma_CheckedChanged(object sender, EventArgs e)
         {
-            txtResultado.Text= soma(Convert.ToDouble(txt_Valor1.Text), Convert.ToDouble(txt_Valor2.Text)).ToString();
-        }
-        private double soma(double valor1, double valor2)
-        {
-            return valor1 + valor2;
+            double v1 = Convert.ToDouble(txt_Valor1.Text);
+            double v2 = Convert.ToDouble(txt_Valor2.Text);
+            txtResultado.Text = calc(v1, v2, '+').ToString();
             desativeCheckbox();
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            txtResultado.Text = "";
+            txtResultado.Clear();
             desativeCheckbox();
         }
 
         private void rb_Sub_CheckedChanged(object sender, EventArgs e)
         {
-            txtResultado.Text = sub(Convert.ToDouble(txt_Valor1.Text), Convert.ToDouble(txt_Valor2.Text)).ToString();
+            double v1 = Convert.ToDouble(txt_Valor1.Text);
+            double v2 = Convert.ToDouble(txt_Valor2.Text);
+            txtResultado.Text = calc(v1, v2, '-').ToString();
             desativeCheckbox();
         }
-        private double sub(double valor1, double valor2)
-        {
-            return valor1 - valor2;
-        }
-
         private void rb_Div_CheckedChanged(object sender, EventArgs e)
         {
-            txtResultado.Text = div(Convert.ToDouble(txt_Valor1.Text), Convert.ToDouble(txt_Valor2.Text)).ToString();
+            double v1 = Convert.ToDouble(txt_Valor1.Text);
+            double v2 = Convert.ToDouble(txt_Valor2.Text);
+            txtResultado.Text = calc(v1, v2, '/').ToString();
             desativeCheckbox();
         }
-        private double div(double valor1, double valor2)
-        {
-            return valor1 / valor2;
-        }
-
         private void rb_Mult_CheckedChanged(object sender, EventArgs e)
         {
-            txtResultado.Text = mult(Convert.ToDouble(txt_Valor1.Text), Convert.ToDouble(txt_Valor2.Text)).ToString();
+            double v1 = Convert.ToDouble(txt_Valor1.Text);
+            double v2 = Convert.ToDouble(txt_Valor2.Text);
+            txtResultado.Text = calc(v1, v2, '*').ToString();
             desativeCheckbox();
 
         }
-
-        private double mult(double valor1, double valor2)
+        private double calc(double v1, double v2, char operador)
         {
-            return valor1 * valor2;
+            switch (operador)
+            {
+                case '+': return v1 + v2;
+                case '-': return v1 - v2;
+                case '*': return v1 * v2;
+                default: return v1 / v2;
+            }
         }
         private void desativeCheckbox()
         {
